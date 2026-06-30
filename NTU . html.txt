@@ -1,0 +1,1974 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NTU Terms - مصطلحات الأقسام الهندسية</title>
+  <!-- Google Fonts: Tajawal for Arabic, Inter for English -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --bg-primary: #060616;
+      --bg-secondary: #0c0c24;
+      --bg-card: rgba(255, 255, 255, 0.03);
+      --bg-card-hover: rgba(255, 255, 255, 0.07);
+      --text-primary: #f3f3ff;
+      --text-secondary: #94a3b8;
+      --text-muted: #64748b;
+      --border-color: rgba(255, 255, 255, 0.08);
+      --border-glow: rgba(255, 255, 255, 0.15);
+      --shadow-color: rgba(0, 0, 0, 0.4);
+      --font-ar: 'Tajawal', sans-serif;
+      --font-en: 'Inter', sans-serif;
+
+      /* Colors for Departments */
+      --cyber-primary: #ef4444;
+      --cyber-glow: rgba(239, 68, 68, 0.25);
+      --computer-primary: #3b82f6;
+      --computer-glow: rgba(59, 130, 246, 0.25);
+      --mechanical-primary: #f59e0b;
+      --mechanical-glow: rgba(245, 158, 11, 0.25);
+      --electrical-primary: #a855f7;
+      --electrical-glow: rgba(168, 85, 247, 0.25);
+      --civil-primary: #10b981;
+      --civil-glow: rgba(16, 185, 129, 0.25);
+
+      /* Theme Variable (Dynamic) */
+      --theme-color: #3b82f6;
+      --theme-glow: rgba(59, 130, 246, 0.25);
+    }
+
+    /* Reset & Base */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      transition: background-color 0.3s, border-color 0.3s;
+    }
+
+    body {
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      font-family: var(--font-ar);
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: var(--bg-primary);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: var(--border-color);
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--text-muted);
+    }
+
+    /* Orbs Background */
+    .bg-orbs {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(100px);
+      opacity: 0.15;
+      animation: float 20s infinite ease-in-out alternate;
+    }
+
+    .orb-1 {
+      width: 400px;
+      height: 400px;
+      background: var(--cyber-primary);
+      top: -10%;
+      right: 10%;
+    }
+
+    .orb-2 {
+      width: 500px;
+      height: 500px;
+      background: var(--computer-primary);
+      bottom: -10%;
+      left: -10%;
+      animation-delay: -5s;
+    }
+
+    .orb-3 {
+      width: 350px;
+      height: 350px;
+      background: var(--electrical-primary);
+      top: 40%;
+      left: 30%;
+      animation-delay: -10s;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0) scale(1); }
+      100% { transform: translateY(-50px) scale(1.1); }
+    }
+
+    /* Navbar */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 70px;
+      background: rgba(6, 6, 22, 0.7);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border-color);
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 24px;
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 1.4rem;
+      font-weight: 900;
+      background: linear-gradient(135deg, #fff, var(--text-secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      cursor: pointer;
+    }
+
+    .nav-brand span {
+      font-family: var(--font-en);
+      font-weight: 800;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    /* Buttons */
+    .btn {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      color: var(--text-primary);
+      padding: 10px 18px;
+      border-radius: 12px;
+      cursor: pointer;
+      font-family: var(--font-ar);
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .btn:hover {
+      background: var(--bg-card-hover);
+      border-color: var(--theme-color);
+      box-shadow: 0 0 15px var(--theme-glow);
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      background: var(--theme-color);
+      border-color: var(--theme-color);
+      color: #fff;
+    }
+
+    .btn-primary:hover {
+      background: transparent;
+      color: var(--text-primary);
+    }
+
+    .btn-back {
+      padding: 8px 14px;
+      font-size: 0.95rem;
+    }
+
+    /* Main Layout */
+    main {
+      padding-top: 100px;
+      padding-bottom: 60px;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+
+    /* View Handling */
+    .view {
+      display: none;
+    }
+
+    .view.active {
+      display: block;
+      animation: fadeIn 0.4s ease-out forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(15px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      padding: 40px 0;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(59, 130, 246, 0.1);
+      border: 1px solid rgba(59, 130, 246, 0.2);
+      color: #60a5fa;
+      padding: 6px 14px;
+      border-radius: 50px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .hero-title {
+      font-size: 2.8rem;
+      font-weight: 900;
+      margin-bottom: 12px;
+      line-height: 1.2;
+    }
+
+    .hero-subtitle {
+      color: var(--text-secondary);
+      font-size: 1.1rem;
+      max-width: 600px;
+      margin: 0 auto 30px;
+    }
+
+    /* Stats Row */
+    .stats-row {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+
+    .stat-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 16px 28px;
+      text-align: center;
+      min-width: 140px;
+    }
+
+    .stat-number {
+      font-size: 2rem;
+      font-weight: 900;
+      color: var(--theme-color);
+      font-family: var(--font-en);
+    }
+
+    .stat-label {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      margin-top: 4px;
+    }
+
+    /* Department Grid */
+    .dept-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 24px;
+    }
+
+    .dept-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      padding: 28px;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      backdrop-filter: blur(10px);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .dept-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: var(--dept-color);
+    }
+
+    .dept-card:hover {
+      transform: translateY(-8px);
+      border-color: var(--dept-color);
+      box-shadow: 0 10px 30px var(--dept-glow);
+      background: var(--bg-card-hover);
+    }
+
+    .dept-icon {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      display: inline-block;
+    }
+
+    .dept-title-ar {
+      font-size: 1.35rem;
+      font-weight: 900;
+      margin-bottom: 6px;
+    }
+
+    .dept-title-en {
+      font-family: var(--font-en);
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      margin-bottom: 20px;
+      direction: ltr;
+      display: block;
+      text-align: right;
+    }
+
+    .dept-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border-color);
+      padding-top: 16px;
+      margin-top: 10px;
+    }
+
+    /* Progress Indicators */
+    .progress-wrapper {
+      margin-top: 15px;
+    }
+
+    .progress-text {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      margin-bottom: 6px;
+    }
+
+    .progress-track {
+      background: rgba(255, 255, 255, 0.05);
+      height: 6px;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      border-radius: 10px;
+      transition: width 0.6s ease-out;
+    }
+
+    /* Header for Sub-Views */
+    .view-header {
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 20px;
+      margin-bottom: 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .header-details h2 {
+      font-size: 1.8rem;
+      font-weight: 900;
+    }
+
+    .header-details p {
+      color: var(--text-secondary);
+      margin-top: 6px;
+    }
+
+    /* Groups Grid */
+    .groups-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .group-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 24px;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 160px;
+      transition: all 0.3s ease;
+    }
+
+    .group-card:hover {
+      border-color: var(--theme-color);
+      background: var(--bg-card-hover);
+      transform: translateY(-4px);
+    }
+
+    .group-badge {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-color);
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: bold;
+      width: fit-content;
+    }
+
+    .group-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin: 14px 0 8px;
+    }
+
+    .group-subtitle {
+      font-family: var(--font-en);
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      direction: ltr;
+      text-align: right;
+    }
+
+    /* Terms View Controls */
+    .view-controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .terms-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    /* Flashcard (3D Card Flip) */
+    .flashcard {
+      perspective: 1000px;
+      min-height: 220px;
+      cursor: pointer;
+    }
+
+    .flashcard-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transform-style: preserve-3d;
+      transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .flashcard.flipped .flashcard-inner {
+      transform: rotateY(180deg);
+    }
+
+    .flashcard-front, .flashcard-back {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 18px;
+      padding: 24px;
+      border: 1px solid var(--border-color);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 10px 20px var(--shadow-color);
+    }
+
+    .flashcard-front {
+      background: var(--bg-card);
+    }
+
+    .flashcard-back {
+      background: rgba(255, 255, 255, 0.05);
+      border-color: var(--theme-color);
+      transform: rotateY(180deg);
+    }
+
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .card-word-en {
+      font-family: var(--font-en);
+      font-size: 1.6rem;
+      font-weight: 800;
+      text-align: center;
+      margin: auto 0;
+      color: #fff;
+    }
+
+    .card-word-ar {
+      font-size: 1.5rem;
+      font-weight: 900;
+      text-align: center;
+      margin-top: auto;
+      margin-bottom: 10px;
+      color: var(--theme-color);
+    }
+
+    .card-pronunciation {
+      text-align: center;
+      font-size: 1rem;
+      color: var(--text-secondary);
+      margin-bottom: auto;
+      background: rgba(255, 255, 255, 0.03);
+      padding: 6px 12px;
+      border-radius: 8px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      align-self: center;
+    }
+
+    .btn-audio {
+      background: none;
+      border: none;
+      color: var(--text-secondary);
+      cursor: pointer;
+      font-size: 1.1rem;
+    }
+
+    .btn-audio:hover {
+      color: #fff;
+    }
+
+    .card-hint {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    /* Page Navigation */
+    .page-nav {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 30px;
+    }
+
+    /* Search View */
+    .search-bar {
+      max-width: 600px;
+      margin: 0 auto 30px;
+      position: relative;
+    }
+
+    .search-input {
+      width: 100%;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 16px 20px;
+      color: #fff;
+      font-family: var(--font-ar);
+      font-size: 1.1rem;
+      outline: none;
+    }
+
+    .search-input:focus {
+      border-color: var(--theme-color);
+      box-shadow: 0 0 15px var(--theme-glow);
+    }
+
+    .search-results {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .result-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      padding: 18px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .result-words {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .result-en {
+      font-family: var(--font-en);
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .result-ar {
+      font-size: 1.1rem;
+      color: var(--theme-color);
+      font-weight: 700;
+    }
+
+    .result-badge {
+      font-size: 0.8rem;
+      padding: 4px 10px;
+      border-radius: 8px;
+    }
+
+    mark {
+      background: rgba(245, 158, 11, 0.3);
+      color: #ffedd5;
+      padding: 0 2px;
+      border-radius: 4px;
+    }
+
+    /* Quiz View */
+    .quiz-container {
+      max-width: 700px;
+      margin: 0 auto;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 24px;
+      padding: 32px;
+      backdrop-filter: blur(10px);
+    }
+
+    .quiz-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+    }
+
+    .quiz-question-box {
+      margin-bottom: 30px;
+    }
+
+    .question-label {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .question-text {
+      font-family: var(--font-en);
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: #fff;
+      text-align: center;
+      padding: 20px 0;
+    }
+
+    .options-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+
+    .option-btn {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      padding: 16px 20px;
+      color: var(--text-primary);
+      text-align: right;
+      font-family: var(--font-ar);
+      font-size: 1.05rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: all 0.3s;
+    }
+
+    .option-btn:hover {
+      background: var(--bg-card-hover);
+      border-color: var(--theme-color);
+    }
+
+    .option-btn.correct {
+      background: rgba(16, 185, 129, 0.15);
+      border-color: var(--civil-primary);
+      color: #a7f3d0;
+    }
+
+    .option-btn.wrong {
+      background: rgba(239, 68, 68, 0.15);
+      border-color: var(--cyber-primary);
+      color: #fca5a5;
+    }
+
+    .quiz-results-screen {
+      text-align: center;
+    }
+
+    .score-circle {
+      position: relative;
+      width: 160px;
+      height: 160px;
+      margin: 0 auto 24px;
+    }
+
+    .score-circle svg {
+      width: 100%;
+      height: 100%;
+      transform: rotate(-90deg);
+    }
+
+    .score-circle circle {
+      fill: none;
+      stroke-width: 10;
+    }
+
+    .score-circle .circle-bg {
+      stroke: rgba(255, 255, 255, 0.05);
+    }
+
+    .score-circle .circle-fill {
+      stroke: var(--theme-color);
+      stroke-linecap: round;
+      transition: stroke-dashoffset 1s ease-out;
+    }
+
+    .score-value {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 1.8rem;
+      font-weight: 900;
+    }
+
+    .result-title {
+      font-size: 1.6rem;
+      font-weight: 900;
+      margin-bottom: 8px;
+    }
+
+    .result-description {
+      color: var(--text-secondary);
+      margin-bottom: 30px;
+    }
+
+    .result-actions {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+    }
+
+    /* Toast */
+    .toast-container {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1100;
+    }
+
+    .toast {
+      background: rgba(12, 12, 36, 0.9);
+      border: 1px solid var(--theme-color);
+      border-radius: 12px;
+      padding: 12px 24px;
+      color: #fff;
+      font-weight: bold;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      animation: slideUp 0.3s ease-out;
+    }
+
+    @keyframes slideUp {
+      from { transform: translateY(100px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    /* Quiz Selector Page */
+    .quiz-setup {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .hero-title { font-size: 2.2rem; }
+      .navbar { padding: 0 16px; }
+      .result-item { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Background Orbs -->
+  <div class="bg-orbs">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+  </div>
+
+  <!-- Top Navigation Bar -->
+  <header class="navbar">
+    <div class="nav-brand" onclick="app.navigate('home')">
+      <span>NTU Terms</span> | مصطلحات الجامعة التقنية الشمالية
+    </div>
+    <div class="nav-actions">
+      <button class="btn" id="btn-home" onclick="app.navigate('home')">💡 الرئيسية</button>
+      <button class="btn" id="btn-search" onclick="app.navigate('search')">🔍 بحث</button>
+      <button class="btn btn-primary" id="btn-quiz" onclick="app.navigate('quiz')">📝 اختبار</button>
+    </div>
+  </header>
+
+  <!-- Main Content Container -->
+  <main id="app">
+    
+    <!-- 1. Home View -->
+    <section id="view-home" class="view">
+      <div class="hero">
+        <div class="hero-badge">💡 الدليل التقني الشامل</div>
+        <h1 class="hero-title">تطبيق NTU Terms لجميع الأقسام الهندسية</h1>
+        <p class="hero-subtitle">
+          منصة تعليمية تفاعلية مخصصة لطلاب ومحبي الهندسة في الجامعة التقنية الشمالية. تعلّم المصطلحات والمفاهيم التقنية بسهولة ومتعة.
+        </p>
+        
+        <div class="stats-row">
+          <div class="stat-card">
+            <div class="stat-number">5</div>
+            <div class="stat-label">أقسام هندسية</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">25</div>
+            <div class="stat-label">مجموعة دراسية</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">250</div>
+            <div class="stat-label">مصطلح هندسي</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="dept-grid" id="home-depts">
+        <!-- Rendered dynamically -->
+      </div>
+    </section>
+
+    <!-- 2. Department View -->
+    <section id="view-department" class="view">
+      <div class="view-header">
+        <div class="header-details">
+          <button class="btn btn-back" onclick="app.navigate('home')" style="margin-bottom:12px;">← عودة للأقسام</button>
+          <h2 id="dept-name-ar">اسم القسم بالعربية</h2>
+          <p id="dept-name-en" style="direction: ltr; text-align: right;">Department Name in English</p>
+        </div>
+        <div id="dept-actions">
+          <!-- Quiz button rendered dynamically -->
+        </div>
+      </div>
+      
+      <div class="groups-grid" id="dept-groups">
+        <!-- Rendered dynamically -->
+      </div>
+    </section>
+
+    <!-- 3. Terms View (Flashcards) -->
+    <section id="view-terms" class="view">
+      <div class="view-header">
+        <div class="header-details">
+          <button class="btn btn-back" id="btn-terms-back" onclick="app.navigate('department')" style="margin-bottom:12px;">← عودة للمجموعات</button>
+          <h2 id="terms-group-name">اسم المجموعة</h2>
+          <p id="terms-dept-name">اسم القسم</p>
+        </div>
+        <div>
+          <button class="btn" onclick="app.flipAllCards()">🔄 قلب الكل</button>
+        </div>
+      </div>
+
+      <div class="progress-wrapper" style="margin-bottom: 24px;">
+        <div class="progress-text">
+          <span>التقدم في هذه المجموعة</span>
+          <span id="group-progress-pct">0%</span>
+        </div>
+        <div class="progress-track">
+          <div class="progress-fill" id="group-progress-bar" style="background: var(--theme-color); width: 0%;"></div>
+        </div>
+      </div>
+
+      <div class="terms-grid" id="terms-list">
+        <!-- Rendered dynamically -->
+      </div>
+
+      <div class="page-nav">
+        <button class="btn" id="btn-prev-group">← المجموعة السابقة</button>
+        <button class="btn" id="btn-next-group">المجموعة التالية →</button>
+      </div>
+    </section>
+
+    <!-- 4. Search View -->
+    <section id="view-search" class="view">
+      <div class="hero">
+        <h2 style="font-size: 2.2rem; font-weight:900; margin-bottom: 12px;">البحث الذكي في المصطلحات</h2>
+        <p style="color:var(--text-secondary); margin-bottom: 20px;">ابحث عن أي مصطلح بالإنجليزية، العربية، أو النطق التقريبي</p>
+      </div>
+      
+      <div class="search-bar">
+        <input type="text" class="search-input" id="search-box" placeholder="اكتب للبحث (مثال: Firewall، الخرسانة، فايَروول)..." oninput="app.handleSearch(event)">
+      </div>
+
+      <div class="search-results" id="search-results-list">
+        <!-- Rendered dynamically -->
+      </div>
+    </section>
+
+    <!-- 5. Quiz View -->
+    <section id="view-quiz" class="view">
+      <!-- Quiz Setup Screen -->
+      <div id="quiz-setup-screen">
+        <div class="hero">
+          <h2 style="font-size: 2.2rem; font-weight:900; margin-bottom: 12px;">اختبر معلوماتك الهندسية</h2>
+          <p style="color:var(--text-secondary);">اختر القسم الهندسي للبدء في تحدي الـ 10 أسئلة العشوائية</p>
+        </div>
+        <div class="dept-grid" id="quiz-depts">
+          <!-- Rendered dynamically -->
+        </div>
+      </div>
+
+      <!-- Active Quiz Screen -->
+      <div id="quiz-active-screen" style="display:none;">
+        <div class="quiz-container">
+          <div class="quiz-header">
+            <div>
+              <span id="quiz-dept-title" class="group-badge">القسم</span>
+            </div>
+            <div style="font-weight: bold; color: var(--theme-color);">
+              السؤال <span id="quiz-current-num">1</span> / 10
+            </div>
+          </div>
+
+          <div class="progress-track" style="margin-bottom: 30px;">
+            <div class="progress-fill" id="quiz-progress-bar" style="background: var(--theme-color); width: 10%;"></div>
+          </div>
+
+          <div class="quiz-question-box">
+            <span class="question-label">ما هو معنى المصطلح التالي؟</span>
+            <div class="question-text" id="quiz-question-text">Word</div>
+          </div>
+
+          <div class="options-grid" id="quiz-options-list">
+            <!-- Options rendered dynamically -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Quiz Results Screen -->
+      <div id="quiz-results-screen" class="quiz-results-screen" style="display:none;">
+        <div class="quiz-container">
+          <div class="score-circle">
+            <svg>
+              <circle class="circle-bg" cx="80" cy="80" r="70"></circle>
+              <circle class="circle-fill" id="results-circle-fill" cx="80" cy="80" r="70" stroke-dasharray="440" stroke-dashoffset="440"></circle>
+            </svg>
+            <div class="score-value" id="results-percentage">0%</div>
+          </div>
+          
+          <h3 class="result-title" id="results-grade">أداء ممتاز!</h3>
+          <p class="result-description" id="results-text">لقد أجبت على 9 من أصل 10 أسئلة بشكل صحيح.</p>
+          
+          <div class="result-actions">
+            <button class="btn btn-primary" onclick="app.restartQuiz()">إعادة الاختبار 🔄</button>
+            <button class="btn" onclick="app.navigate('home')">الرئيسية 💡</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- App logic & Data -->
+  <script>
+    const DEPARTMENTS = [
+      {
+        id: 'cyber',
+        nameAr: 'تقنيات الأمن السيبراني',
+        nameEn: 'Cybersecurity Technologies',
+        icon: '🔐',
+        color: 'var(--cyber-primary)',
+        glow: 'var(--cyber-glow)',
+        groups: [
+          {
+            nameAr: 'أساسيات الأمن السيبراني',
+            nameEn: 'Cybersecurity Fundamentals',
+            terms: [
+              { en: 'Cybersecurity', ar: 'الأمن السيبراني', pron: 'سايبر سِكيوريتي' },
+              { en: 'Firewall', ar: 'جدار الحماية', pron: 'فايَروول' },
+              { en: 'Encryption', ar: 'التشفير', pron: 'إنكرِبشَن' },
+              { en: 'Decryption', ar: 'فك التشفير', pron: 'ديكرِبشَن' },
+              { en: 'Authentication', ar: 'المصادقة / التحقق من الهوية', pron: 'أوثينتيكيشَن' },
+              { en: 'Authorization', ar: 'التخويل / منح الصلاحيات', pron: 'أوثورايزيشَن' },
+              { en: 'Malware', ar: 'البرمجيات الخبيثة', pron: 'مالوير' },
+              { en: 'Vulnerability', ar: 'الثغرة الأمنية', pron: 'فَلنِرَبيليتي' },
+              { en: 'Threat', ar: 'التهديد', pron: 'ثريت' },
+              { en: 'Risk Assessment', ar: 'تقييم المخاطر', pron: 'رِسك أسيسمَنت' }
+            ]
+          },
+          {
+            nameAr: 'الهجمات والتهديدات',
+            nameEn: 'Attacks and Threats',
+            terms: [
+              { en: 'Phishing', ar: 'التصيّد الاحتيالي', pron: 'فيشِنغ' },
+              { en: 'Ransomware', ar: 'برامج الفدية', pron: 'رانسَموير' },
+              { en: 'Denial of Service (DoS)', ar: 'حجب الخدمة', pron: 'دينايَل أوف سيرفِس' },
+              { en: 'Brute Force Attack', ar: 'هجوم القوة الغاشمة', pron: 'بروت فورس أتاك' },
+              { en: 'SQL Injection', ar: 'حقن قواعد البيانات', pron: 'إس كيو إل إنجِكشَن' },
+              { en: 'Cross-Site Scripting (XSS)', ar: 'البرمجة عبر المواقع', pron: 'كروس سايت سكرِبتِنغ' },
+              { en: 'Man-in-the-Middle Attack', ar: 'هجوم الرجل في الوسط', pron: 'مان إن ذا مِدل أتاك' },
+              { en: 'Social Engineering', ar: 'الهندسة الاجتماعية', pron: 'سوشَل إنجِنيرِنغ' },
+              { en: 'Zero-Day Exploit', ar: 'استغلال ثغرة يوم الصفر', pron: 'زيرو داي إكسبلويت' },
+              { en: 'Spoofing', ar: 'الانتحال / التزييف', pron: 'سبوفِنغ' }
+            ]
+          },
+          {
+            nameAr: 'الحماية والدفاع',
+            nameEn: 'Protection and Defense',
+            terms: [
+              { en: 'Intrusion Detection System (IDS)', ar: 'نظام كشف التسلل', pron: 'إنتروجَن ديتِكشَن سِستَم' },
+              { en: 'Intrusion Prevention System (IPS)', ar: 'نظام منع التسلل', pron: 'إنتروجَن بريفِنشَن سِستَم' },
+              { en: 'Penetration Testing', ar: 'اختبار الاختراق', pron: 'بِنِتريشَن تيستِنغ' },
+              { en: 'Digital Forensics', ar: 'الأدلة الجنائية الرقمية', pron: 'ديجيتَل فورينسِكس' },
+              { en: 'Incident Response', ar: 'الاستجابة للحوادث', pron: 'إنسِدَنت رِسبونس' },
+              { en: 'Access Control', ar: 'التحكم بالوصول', pron: 'أكسِس كونترول' },
+              { en: 'Multi-Factor Authentication (MFA)', ar: 'المصادقة متعددة العوامل', pron: 'مَلتي فاكتور أوثينتيكيشَن' },
+              { en: 'Security Audit', ar: 'التدقيق الأمني', pron: 'سِكيوريتي أوديت' },
+              { en: 'Patch Management', ar: 'إدارة التحديثات الأمنية', pron: 'باتش مانِجمَنت' },
+              { en: 'Security Policy', ar: 'السياسة الأمنية', pron: 'سِكيوريتي بوليسي' }
+            ]
+          },
+          {
+            nameAr: 'التشفير والشبكات الآمنة',
+            nameEn: 'Cryptography & Secure Networks',
+            terms: [
+              { en: 'Public Key Infrastructure (PKI)', ar: 'البنية التحتية للمفتاح العام', pron: 'بَبلِك كي إنفراسترَكتشَر' },
+              { en: 'Symmetric Encryption', ar: 'التشفير المتماثل', pron: 'سِمِترِك إنكرِبشَن' },
+              { en: 'Asymmetric Encryption', ar: 'التشفير غير المتماثل', pron: 'أسِمِترِك إنكرِبشَن' },
+              { en: 'Hash Function', ar: 'دالة التجزئة', pron: 'هاش فَنكشَن' },
+              { en: 'Digital Certificate', ar: 'الشهادة الرقمية', pron: 'ديجيتَل سيرتيفيكِت' },
+              { en: 'Virtual Private Network (VPN)', ar: 'الشبكة الافتراضية الخاصة', pron: 'في بي إن' },
+              { en: 'Secure Socket Layer (SSL)', ar: 'طبقة المقابس الآمنة', pron: 'إس إس إل' },
+              { en: 'Transport Layer Security (TLS)', ar: 'أمن طبقة النقل', pron: 'تي إل إس' },
+              { en: 'Blockchain Security', ar: 'أمن سلسلة الكتل', pron: 'بلوكتشين سِكيوريتي' },
+              { en: 'Endpoint Security', ar: 'أمن نقاط النهاية', pron: 'إندبوينت سِكيوريتي' }
+            ]
+          },
+          {
+            nameAr: 'مفاهيم متقدمة',
+            nameEn: 'Advanced Concepts',
+            terms: [
+              { en: 'Ethical Hacking', ar: 'الاختراق الأخلاقي', pron: 'إثيكَل هاكِنغ' },
+              { en: 'Cyber Threat Intelligence', ar: 'استخبارات التهديد السيبراني', pron: 'سايبر ثريت إنتيليجَنس' },
+              { en: 'Security Information & Event Management (SIEM)', ar: 'إدارة معلومات وأحداث الأمن', pron: 'سيم' },
+              { en: 'Data Loss Prevention (DLP)', ar: 'منع فقدان البيانات', pron: 'دي إل بي' },
+              { en: 'Identity and Access Management (IAM)', ar: 'إدارة الهوية والوصول', pron: 'آي أي إم' },
+              { en: 'Cloud Security', ar: 'أمن الحوسبة السحابية', pron: 'كلاود سِكيوريتي' },
+              { en: 'Botnet', ar: 'شبكة الروبوتات الخبيثة', pron: 'بوتنِت' },
+              { en: 'Sandboxing', ar: 'العزل الافتراضي / صندوق الرمل', pron: 'ساندبوكسِنغ' },
+              { en: 'Tokenization', ar: 'الترميـز', pron: 'توكِنايزيشَن' },
+              { en: 'Compliance', ar: 'الامتثال للمعايير', pron: 'كومبلايَنس' }
+            ]
+          }
+        ]
+      },
+      {
+        id: 'computer',
+        nameAr: 'هندسة تقنيات الحاسوب',
+        nameEn: 'Computer Engineering Technologies',
+        icon: '💻',
+        color: 'var(--computer-primary)',
+        glow: 'var(--computer-glow)',
+        groups: [
+          {
+            nameAr: 'أساسيات الحاسوب والعتاد',
+            nameEn: 'Computer Hardware Fundamentals',
+            terms: [
+              { en: 'Processor (CPU)', ar: 'المعالج / وحدة المعالجة المركزية', pron: 'بروسيسَر' },
+              { en: 'Random Access Memory (RAM)', ar: 'ذاكرة الوصول العشوائي', pron: 'رام' },
+              { en: 'Motherboard', ar: 'اللوحة الأم', pron: 'مَذَربورد' },
+              { en: 'Hard Disk Drive (HDD)', ar: 'القرص الصلب', pron: 'هارد دِسك درايف' },
+              { en: 'Solid State Drive (SSD)', ar: 'قرص الحالة الصلبة', pron: 'إس إس دي' },
+              { en: 'Graphics Processing Unit (GPU)', ar: 'وحدة معالجة الرسوميات', pron: 'جي بي يو' },
+              { en: 'Input/Output (I/O)', ar: 'الإدخال والإخراج', pron: 'آي أو' },
+              { en: 'Bus Architecture', ar: 'هيكلية الناقل', pron: 'بَس آركِتِكتشَر' },
+              { en: 'Cache Memory', ar: 'الذاكرة المخبئية', pron: 'كاش ميموري' },
+              { en: 'Register', ar: 'المسجّل', pron: 'رِجِستَر' }
+            ]
+          },
+          {
+            nameAr: 'البرمجة وهياكل البيانات',
+            nameEn: 'Programming & Data Structures',
+            terms: [
+              { en: 'Algorithm', ar: 'الخوارزمية', pron: 'ألغوريثِم' },
+              { en: 'Data Structure', ar: 'هيكل البيانات', pron: 'ديتا سترَكتشَر' },
+              { en: 'Compiler', ar: 'المترجم', pron: 'كومبايلَر' },
+              { en: 'Debugging', ar: 'تصحيح الأخطاء', pron: 'ديباغِنغ' },
+              { en: 'Object-Oriented Programming (OOP)', ar: 'البرمجة كائنية التوجه', pron: 'أوبجِكت أوريَنتِد بروغرامِنغ' },
+              { en: 'Array', ar: 'المصفوفة', pron: 'أريي' },
+              { en: 'Linked List', ar: 'القائمة المترابطة', pron: 'لِنكد لِست' },
+              { en: 'Stack', ar: 'المكدّس', pron: 'ستاك' },
+              { en: 'Queue', ar: 'الطابور / الرتل', pron: 'كيو' },
+              { en: 'Binary Tree', ar: 'الشجرة الثنائية', pron: 'باينَري تري' }
+            ]
+          },
+          {
+            nameAr: 'الشبكات والاتصالات',
+            nameEn: 'Networking & Communications',
+            terms: [
+              { en: 'Local Area Network (LAN)', ar: 'الشبكة المحلية', pron: 'لان' },
+              { en: 'Wide Area Network (WAN)', ar: 'شبكة واسعة النطاق', pron: 'وان' },
+              { en: 'Protocol', ar: 'البروتوكول / الميثاق', pron: 'بروتوكول' },
+              { en: 'TCP/IP', ar: 'بروتوكول التحكم بالنقل / بروتوكول الإنترنت', pron: 'تي سي بي / آي بي' },
+              { en: 'Router', ar: 'الموجّه', pron: 'راوتَر' },
+              { en: 'Switch', ar: 'المبدّل', pron: 'سويتش' },
+              { en: 'Bandwidth', ar: 'عرض النطاق الترددي', pron: 'باندوِدث' },
+              { en: 'Latency', ar: 'زمن الاستجابة / التأخير', pron: 'ليتَنسي' },
+              { en: 'IP Address', ar: 'عنوان بروتوكول الإنترنت', pron: 'آي بي أدرِس' },
+              { en: 'Domain Name System (DNS)', ar: 'نظام أسماء النطاقات', pron: 'دي إن إس' }
+            ]
+          },
+          {
+            nameAr: 'قواعد البيانات وأنظمة التشغيل',
+            nameEn: 'Databases & OS',
+            terms: [
+              { en: 'Database', ar: 'قاعدة البيانات', pron: 'ديتابيس' },
+              { en: 'Relational Database', ar: 'قاعدة بيانات علائقية', pron: 'رِليشَنَل ديتابيس' },
+              { en: 'Query', ar: 'الاستعلام', pron: 'كويري' },
+              { en: 'Primary Key', ar: 'المفتاح الأساسي', pron: 'برايمَري كي' },
+              { en: 'Foreign Key', ar: 'المفتاح الأجنبي', pron: 'فورِن كي' },
+              { en: 'Operating System', ar: 'نظام التشغيل', pron: 'أوبَريتِنغ سِستَم' },
+              { en: 'Kernel', ar: 'النواة', pron: 'كيرنَل' },
+              { en: 'Process', ar: 'العملية', pron: 'بروسِس' },
+              { en: 'Thread', ar: 'الخيط / المسار', pron: 'ثرِد' },
+              { en: 'Virtual Memory', ar: 'الذاكرة الافتراضية', pron: 'فيرتشوَل ميموري' }
+            ]
+          },
+          {
+            nameAr: 'تقنيات حديثة',
+            nameEn: 'Modern Technologies',
+            terms: [
+              { en: 'Artificial Intelligence (AI)', ar: 'الذكاء الاصطناعي', pron: 'آرتيفيشَل إنتيليجَنس' },
+              { en: 'Machine Learning', ar: 'التعلم الآلي', pron: 'مَشين ليرنِنغ' },
+              { en: 'Deep Learning', ar: 'التعلم العميق', pron: 'ديب ليرنِنغ' },
+              { en: 'Internet of Things (IoT)', ar: 'إنترنت الأشياء', pron: 'آي أو تي' },
+              { en: 'Cloud Computing', ar: 'الحوسبة السحابية', pron: 'كلاود كومبيوتِنغ' },
+              { en: 'Embedded System', ar: 'النظام المدمج', pron: 'إمبِدِد سِستَم' },
+              { en: 'Microcontroller', ar: 'المتحكم الدقيق', pron: 'مايكروكونترولَر' },
+              { en: 'FPGA', ar: 'مصفوفة البوابات القابلة للبرمجة', pron: 'إف بي جي أي' },
+              { en: 'API', ar: 'واجهة برمجة التطبيقات', pron: 'أي بي آي' },
+              { en: 'Version Control', ar: 'التحكم بالإصدارات', pron: 'فيرجَن كونترول' }
+            ]
+          }
+        ]
+      },
+      {
+        id: 'mechanical',
+        nameAr: 'الهندسة الميكانيكية',
+        nameEn: 'Mechanical Engineering',
+        icon: '⚙️',
+        color: 'var(--mechanical-primary)',
+        glow: 'var(--mechanical-glow)',
+        groups: [
+          {
+            nameAr: 'الميكانيكا والقوى',
+            nameEn: 'Mechanics and Forces',
+            terms: [
+              { en: 'Force', ar: 'القوة', pron: 'فورس' },
+              { en: 'Torque', ar: 'عزم الدوران', pron: 'تورك' },
+              { en: 'Stress', ar: 'الإجهاد', pron: 'ستريس' },
+              { en: 'Strain', ar: 'الانفعال', pron: 'سترين' },
+              { en: 'Elasticity', ar: 'المرونة', pron: 'إلاستيسيتي' },
+              { en: 'Friction', ar: 'الاحتكاك', pron: 'فرِكشَن' },
+              { en: 'Momentum', ar: 'الزخم / كمية الحركة', pron: 'مومِنتَم' },
+              { en: 'Equilibrium', ar: 'التوازن', pron: 'إيكوِليبريَم' },
+              { en: 'Shear Force', ar: 'قوة القص', pron: 'شير فورس' },
+              { en: 'Bending Moment', ar: 'عزم الانحناء', pron: 'بِندِنغ مومَنت' }
+            ]
+          },
+          {
+            nameAr: 'الديناميكا الحرارية والموائع',
+            nameEn: 'Thermodynamics & Fluids',
+            terms: [
+              { en: 'Thermodynamics', ar: 'الديناميكا الحرارية', pron: 'ثيرمودايناميكس' },
+              { en: 'Heat Transfer', ar: 'انتقال الحرارة', pron: 'هيت ترانسفَر' },
+              { en: 'Conduction', ar: 'التوصيل الحراري', pron: 'كوندَكشَن' },
+              { en: 'Convection', ar: 'الحمل الحراري', pron: 'كونفِكشَن' },
+              { en: 'Radiation', ar: 'الإشعاع', pron: 'ريدييشَن' },
+              { en: 'Entropy', ar: 'العشوائية / الإنتروبي', pron: 'إنتروبي' },
+              { en: 'Enthalpy', ar: 'المحتوى الحراري', pron: 'إنثالبي' },
+              { en: 'Fluid Mechanics', ar: 'ميكانيكا الموائع', pron: 'فلويد مِكانِكس' },
+              { en: 'Viscosity', ar: 'اللزوجة', pron: 'فيسكوسيتي' },
+              { en: 'Reynolds Number', ar: 'عدد رينولدز', pron: 'رينولدز نَمبَر' }
+            ]
+          },
+          {
+            nameAr: 'المواد والتصنيع',
+            nameEn: 'Materials & Manufacturing',
+            terms: [
+              { en: 'Material Science', ar: 'علم المواد', pron: 'ماتيريَل ساينس' },
+              { en: 'Tensile Strength', ar: 'مقاومة الشد', pron: 'تِنسايل سترينغث' },
+              { en: 'Hardness', ar: 'الصلادة', pron: 'هاردنِس' },
+              { en: 'Ductility', ar: 'المطيلية / قابلية السحب', pron: 'دَكتيليتي' },
+              { en: 'Fatigue', ar: 'الكلال / الإعياء', pron: 'فاتيغ' },
+              { en: 'Corrosion', ar: 'التآكل', pron: 'كوروجَن' },
+              { en: 'Alloy', ar: 'السبيكة', pron: 'ألوي' },
+              { en: 'Casting', ar: 'السباكة / الصب', pron: 'كاستِنغ' },
+              { en: 'Welding', ar: 'اللحام', pron: 'ويلدِنغ' },
+              { en: 'CNC Machining', ar: 'التشغيل بالتحكم الرقمي', pron: 'سي إن سي ماشينِنغ' }
+            ]
+          },
+          {
+            nameAr: 'عناصر الآلات والتصميم',
+            nameEn: 'Machine Elements & Design',
+            terms: [
+              { en: 'Gear', ar: 'المسنّن / التِرس', pron: 'غير' },
+              { en: 'Bearing', ar: 'المحمل / الكرسي', pron: 'بيرِنغ' },
+              { en: 'Shaft', ar: 'عمود الدوران', pron: 'شافت' },
+              { en: 'Spring', ar: 'النابض / الزنبرك', pron: 'سبرِنغ' },
+              { en: 'Cam Mechanism', ar: 'آلية الحدبة', pron: 'كام مِكانيزِم' },
+              { en: 'Piston', ar: 'المكبس', pron: 'بِستَن' },
+              { en: 'Crankshaft', ar: 'عمود المرفق', pron: 'كرانك شافت' },
+              { en: 'Flywheel', ar: 'الحذّافة / دولاب الموازنة', pron: 'فلاي ويل' },
+              { en: 'Coupling', ar: 'وصلة الربط', pron: 'كَبلِنغ' },
+              { en: 'Tolerance', ar: 'التفاوت المسموح', pron: 'تولِرَنس' }
+            ]
+          },
+          {
+            nameAr: 'أنظمة الطاقة والتحكم',
+            nameEn: 'Power Systems & Control',
+            terms: [
+              { en: 'Internal Combustion Engine', ar: 'محرك الاحتراق الداخلي', pron: 'إنتيرنَل كومبَستشَن إنجِن' },
+              { en: 'Turbine', ar: 'العنفة / التوربين', pron: 'تيربِن' },
+              { en: 'Compressor', ar: 'الضاغط', pron: 'كومبرِسَر' },
+              { en: 'Heat Exchanger', ar: 'المبادل الحراري', pron: 'هيت إكستشينجَر' },
+              { en: 'Hydraulic System', ar: 'النظام الهيدروليكي', pron: 'هايدروليك سِستَم' },
+              { en: 'Pneumatic System', ar: 'النظام الهوائي', pron: 'نيوماتِك سِستَم' },
+              { en: 'Vibration', ar: 'الاهتزاز', pron: 'فايبريشَن' },
+              { en: 'Lubrication', ar: 'التزليق / التشحيم', pron: 'لوبريكيشَن' },
+              { en: 'Refrigeration Cycle', ar: 'دورة التبريد', pron: 'رِفريجَريشَن سايكِل' },
+              { en: 'CAD', ar: 'التصميم بمساعدة الحاسوب', pron: 'كاد' }
+            ]
+          }
+        ]
+      },
+      {
+        id: 'electrical',
+        nameAr: 'الهندسة الكهربائية',
+        nameEn: 'Electrical Engineering',
+        icon: '⚡',
+        color: 'var(--electrical-primary)',
+        glow: 'var(--electrical-glow)',
+        groups: [
+          {
+            nameAr: 'أساسيات الدوائر الكهربائية',
+            nameEn: 'Electrical Circuit Fundamentals',
+            terms: [
+              { en: 'Voltage', ar: 'الجهد الكهربائي / الفولتية', pron: 'فولتِج' },
+              { en: 'Current', ar: 'التيار الكهربائي', pron: 'كَرَنت' },
+              { en: 'Resistance', ar: 'المقاومة', pron: 'رِزِستَنس' },
+              { en: 'Capacitance', ar: 'السعة الكهربائية', pron: 'كاباسيتَنس' },
+              { en: 'Inductance', ar: 'المحاثّة / الحث', pron: 'إندَكتَنس' },
+              { en: 'Ohm\'s Law', ar: 'قانون أوم', pron: 'أومز لو' },
+              { en: 'Kirchhoff\'s Laws', ar: 'قوانين كيرشوف', pron: 'كيرشوفز لوز' },
+              { en: 'Alternating Current (AC)', ar: 'التيار المتناوب', pron: 'أي سي' },
+              { en: 'Direct Current (DC)', ar: 'التيار المستمر', pron: 'دي سي' },
+              { en: 'Impedance', ar: 'المعاوقة', pron: 'إمبيدَنس' }
+            ]
+          },
+          {
+            nameAr: 'الإلكترونيات وأشباه الموصلات',
+            nameEn: 'Electronics & Semiconductors',
+            terms: [
+              { en: 'Semiconductor', ar: 'شبه الموصل', pron: 'سِميكوندَكتَر' },
+              { en: 'Diode', ar: 'الثنائي / الصمام الثنائي', pron: 'دايود' },
+              { en: 'Transistor', ar: 'الترانزستور', pron: 'ترانزِستَر' },
+              { en: 'Integrated Circuit (IC)', ar: 'الدائرة المتكاملة', pron: 'آي سي' },
+              { en: 'Operational Amplifier', ar: 'مضخم العمليات', pron: 'أوب أمب' },
+              { en: 'Rectifier', ar: 'المقوّم', pron: 'رِكتيفايَر' },
+              { en: 'Oscillator', ar: 'المذبذب', pron: 'أوسيليتَر' },
+              { en: 'Logic Gate', ar: 'البوابة المنطقية', pron: 'لوجِك غيت' },
+              { en: 'Flip-Flop', ar: 'القلّاب', pron: 'فلِب فلوب' },
+              { en: 'PCB', ar: 'لوحة الدارة المطبوعة', pron: 'بي سي بي' }
+            ]
+          },
+          {
+            nameAr: 'القدرة الكهربائية والمحركات',
+            nameEn: 'Electrical Power & Motors',
+            terms: [
+              { en: 'Electric Motor', ar: 'المحرك الكهربائي', pron: 'إلِكترِك موتَر' },
+              { en: 'Generator', ar: 'المولّد الكهربائي', pron: 'جينيريتَر' },
+              { en: 'Transformer', ar: 'المحوّل الكهربائي', pron: 'ترانسفورمَر' },
+              { en: 'Power Factor', ar: 'معامل القدرة', pron: 'باوَر فاكتَر' },
+              { en: 'Three-Phase System', ar: 'نظام ثلاثي الطور', pron: 'ثري فيز سِستَم' },
+              { en: 'Circuit Breaker', ar: 'قاطع الدائرة', pron: 'سيركِت بريكَر' },
+              { en: 'Relay', ar: 'المرحّل', pron: 'ريلاي' },
+              { en: 'Induction Motor', ar: 'محرك حثّي', pron: 'إندَكشَن موتَر' },
+              { en: 'Synchronous Machine', ar: 'الآلة التزامنية', pron: 'سينكرونَس مَشين' },
+              { en: 'Load', ar: 'الحمل الكهربائي', pron: 'لود' }
+            ]
+          },
+          {
+            nameAr: 'الاتصالات والإشارات',
+            nameEn: 'Communications & Signals',
+            terms: [
+              { en: 'Signal Processing', ar: 'معالجة الإشارات', pron: 'سِغنَل بروسيسِنغ' },
+              { en: 'Analog Signal', ar: 'الإشارة التناظرية', pron: 'أنالوغ سِغنَل' },
+              { en: 'Digital Signal', ar: 'الإشارة الرقمية', pron: 'ديجيتَل سِغنَل' },
+              { en: 'Modulation', ar: 'التضمين', pron: 'موديوليشَن' },
+              { en: 'Demodulation', ar: 'إزالة التضمين', pron: 'ديموديوليشَن' },
+              { en: 'Frequency', ar: 'التردد', pron: 'فريكوَنسي' },
+              { en: 'Amplitude', ar: 'السعة', pron: 'أمبليتيود' },
+              { en: 'Bandwidth', ar: 'عرض النطاق', pron: 'باندوِدث' },
+              { en: 'Antenna', ar: 'الهوائي', pron: 'أنتينا' },
+              { en: 'Electromagnetic Wave', ar: 'الموجة الكهرومغناطيسية', pron: 'إليكترومَغنيتِك ويف' }
+            ]
+          },
+          {
+            nameAr: 'التحكم والأنظمة الذكية',
+            nameEn: 'Control & Smart Systems',
+            terms: [
+              { en: 'Control System', ar: 'نظام التحكم', pron: 'كونترول سِستَم' },
+              { en: 'Feedback', ar: 'التغذية الراجعة', pron: 'فيدباك' },
+              { en: 'PID Controller', ar: 'متحكم تناسبي تكاملي تفاضلي', pron: 'بي آي دي كونترولَر' },
+              { en: 'Sensor', ar: 'المتحسّس / الحسّاس', pron: 'سينسَر' },
+              { en: 'Actuator', ar: 'المشغّل', pron: 'أكتشويتَر' },
+              { en: 'PLC', ar: 'المتحكم المنطقي القابل للبرمجة', pron: 'بي إل سي' },
+              { en: 'SCADA', ar: 'نظام التحكم الإشرافي وتحصيل البيانات', pron: 'سكادا' },
+              { en: 'Renewable Energy', ar: 'الطاقة المتجددة', pron: 'رِنيوَبَل إنيرجي' },
+              { en: 'Solar Cell', ar: 'الخلية الشمسية', pron: 'سولَر سيل' },
+              { en: 'Smart Grid', ar: 'الشبكة الذكية', pron: 'سمارت غرِد' }
+            ]
+          }
+        ]
+      },
+      {
+        id: 'civil',
+        nameAr: 'الهندسة المدنية',
+        nameEn: 'Civil Engineering',
+        icon: '🏗️',
+        color: 'var(--civil-primary)',
+        glow: 'var(--civil-glow)',
+        groups: [
+          {
+            nameAr: 'أساسيات الهندسة الإنشائية',
+            nameEn: 'Structural Engineering Basics',
+            terms: [
+              { en: 'Structural Engineering', ar: 'الهندسة الإنشائية', pron: 'سترَكتشَرَل إنجِنيرِنغ' },
+              { en: 'Concrete', ar: 'الخرسانة', pron: 'كونكريت' },
+              { en: 'Reinforced Concrete', ar: 'الخرسانة المسلحة', pron: 'رينفورسد كونكريت' },
+              { en: 'Steel Structure', ar: 'المنشأ الفولاذي', pron: 'ستيل سترَكتشَر' },
+              { en: 'Foundation', ar: 'الأساس', pron: 'فاونديشَن' },
+              { en: 'Beam', ar: 'الجسر / العتبة', pron: 'بيم' },
+              { en: 'Column', ar: 'العمود', pron: 'كولَم' },
+              { en: 'Slab', ar: 'البلاطة / السقف', pron: 'سلاب' },
+              { en: 'Truss', ar: 'الجملون / المسنّم', pron: 'ترَس' },
+              { en: 'Load-Bearing Wall', ar: 'الجدار الحامل', pron: 'لود بيرِنغ وول' }
+            ]
+          },
+          {
+            nameAr: 'التربة والأساسات',
+            nameEn: 'Soil & Foundations',
+            terms: [
+              { en: 'Soil Mechanics', ar: 'ميكانيكا التربة', pron: 'سويل مِكانِكس' },
+              { en: 'Geotechnical Engineering', ar: 'الهندسة الجيوتقنية', pron: 'جيوتِكنيكَل إنجِنيرِنغ' },
+              { en: 'Bearing Capacity', ar: 'قدرة التحمل', pron: 'بيرِنغ كاباسيتي' },
+              { en: 'Settlement', ar: 'الهبوط / التسوية', pron: 'سيتلمَنت' },
+              { en: 'Pile Foundation', ar: 'أساس خوازيق', pron: 'بايل فاونديشَن' },
+              { en: 'Shallow Foundation', ar: 'أساس سطحي', pron: 'شالو فاونديشَن' },
+              { en: 'Compaction', ar: 'الدمك / الرصّ', pron: 'كومباكشَن' },
+              { en: 'Permeability', ar: 'النفاذية', pron: 'بيرميَبيليتي' },
+              { en: 'Shear Strength', ar: 'مقاومة القص', pron: 'شير سترينغث' },
+              { en: 'Water Table', ar: 'منسوب المياه الجوفية', pron: 'ووتَر تيبِل' }
+            ]
+          },
+          {
+            nameAr: 'الهيدروليك والمصادر المائية',
+            nameEn: 'Hydraulics & Water Resources',
+            terms: [
+              { en: 'Hydraulics', ar: 'الهيدروليكا', pron: 'هايدروليكس' },
+              { en: 'Hydrology', ar: 'علم المياه', pron: 'هايدرجولوجي' },
+              { en: 'Dam', ar: 'السدّ', pron: 'دام' },
+              { en: 'Spillway', ar: 'المفيض', pron: 'سبِلواي' },
+              { en: 'Drainage System', ar: 'نظام الصرف', pron: 'دريناج سِستَم' },
+              { en: 'Irrigation', ar: 'الري', pron: 'إريغيشَن' },
+              { en: 'Flow Rate', ar: 'معدل التدفق', pron: 'فلو ريت' },
+              { en: 'Pipe Network', ar: 'شبكة الأنابيب', pron: 'بايب نِتويرك' },
+              { en: 'Water Treatment', ar: 'معالجة المياه', pron: 'ووتَر تريتمَنت' },
+              { en: 'Sewage System', ar: 'نظام المجاري', pron: 'سُويج سِستَم' }
+            ]
+          },
+          {
+            nameAr: 'المساحة وهندسة الطرق',
+            nameEn: 'Surveying & Highway Engineering',
+            terms: [
+              { en: 'Surveying', ar: 'المساحة', pron: 'سيرفَيِنغ' },
+              { en: 'Total Station', ar: 'جهاز المحطة الشاملة', pron: 'توتَل ستيشَن' },
+              { en: 'GPS', ar: 'نظام تحديد المواقع العالمي', pron: 'جي بي إس' },
+              { en: 'Contour Line', ar: 'خط الكنتور / خط التسوية', pron: 'كونتور لاين' },
+              { en: 'Leveling', ar: 'التسوية', pron: 'ليفَلِنغ' },
+              { en: 'Pavement Design', ar: 'تصميم الرصف', pron: 'بيفمَنت ديزاين' },
+              { en: 'Asphalt', ar: 'الإسفلت', pron: 'أسفَلت' },
+              { en: 'Highway Engineering', ar: 'هندسة الطرق السريعة', pron: 'هايوي إنجِنيرِنغ' },
+              { en: 'Traffic Engineering', ar: 'هندسة المرور', pron: 'ترافِك إنجِنيرِنغ' },
+              { en: 'Grade / Slope', ar: 'الميل / الانحدار', pron: 'غريد / سلوب' }
+            ]
+          },
+          {
+            nameAr: 'إدارة المشاريع والمواد',
+            nameEn: 'Project Management & Materials',
+            terms: [
+              { en: 'Project Management', ar: 'إدارة المشاريع', pron: 'بروجِكت مانِجمَنت' },
+              { en: 'Bill of Quantities (BOQ)', ar: 'جدول الكميات', pron: 'بي أو كيو' },
+              { en: 'Tender', ar: 'المناقصة', pron: 'تيندَر' },
+              { en: 'Construction Schedule', ar: 'الجدول الزمني للبناء', pron: 'كونسترَكشَن شيديول' },
+              { en: 'Quality Control', ar: 'ضبط الجودة', pron: 'كواليتي كونترول' },
+              { en: 'Cement', ar: 'الإسمنت', pron: 'سيمَنت' },
+              { en: 'Aggregate', ar: 'الركام', pron: 'أغريغِت' },
+              { en: 'Rebar', ar: 'حديد التسليح', pron: 'ريبـار' },
+              { en: 'Formwork', ar: 'القوالب الخشبية / الطوبار', pron: 'فورموورك' },
+              { en: 'Curing', ar: 'الإنضاج / المعالجة', pron: 'كيورِنغ' }
+            ]
+          }
+        ]
+      }
+    ];
+
+    class NTUTermsApp {
+      constructor() {
+        this.currentView = 'home';
+        this.currentDeptId = null;
+        this.currentGroupIndex = null;
+        this.flippedCards = new Set();
+        this.progress = JSON.parse(localStorage.getItem('ntu-terms-progress')) || {};
+        this.quiz = {
+          deptId: null,
+          questions: [],
+          currentIdx: 0,
+          score: 0,
+          answered: false
+        };
+      }
+
+      init() {
+        this.renderHome();
+        this.updateActiveNavLink();
+      }
+
+      navigate(view, params = {}) {
+        this.currentView = view;
+        document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+        
+        if (view === 'home') {
+          this.renderHome();
+          document.getElementById('view-home').classList.add('active');
+        } else if (view === 'department') {
+          this.currentDeptId = params.deptId || this.currentDeptId;
+          this.renderDepartment(this.currentDeptId);
+          document.getElementById('view-department').classList.add('active');
+        } else if (view === 'terms') {
+          this.currentDeptId = params.deptId !== undefined ? params.deptId : this.currentDeptId;
+          this.currentGroupIndex = params.groupIndex !== undefined ? params.groupIndex : this.currentGroupIndex;
+          this.flippedCards.clear();
+          this.renderTerms(this.currentDeptId, this.currentGroupIndex);
+          document.getElementById('view-terms').classList.add('active');
+        } else if (view === 'search') {
+          document.getElementById('view-search').classList.add('active');
+          document.getElementById('search-box').focus();
+        } else if (view === 'quiz') {
+          this.renderQuizSetup();
+          document.getElementById('view-quiz').classList.add('active');
+        }
+
+        this.updateActiveNavLink();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+
+      updateActiveNavLink() {
+        document.getElementById('btn-home').className = this.currentView === 'home' ? 'btn btn-primary' : 'btn';
+        document.getElementById('btn-search').className = this.currentView === 'search' ? 'btn btn-primary' : 'btn';
+        document.getElementById('btn-quiz').className = this.currentView === 'quiz' ? 'btn btn-primary' : 'btn';
+      }
+
+      // Department & Group Helpers
+      getDept(id) {
+        return DEPARTMENTS.find(d => d.id === id);
+      }
+
+      // Progress Management
+      saveProgress() {
+        localStorage.setItem('ntu-terms-progress', JSON.stringify(this.progress));
+      }
+
+      markTermViewed(deptId, groupIdx, termIdx) {
+        if (!this.progress[deptId]) this.progress[deptId] = {};
+        if (!this.progress[deptId][groupIdx]) this.progress[deptId][groupIdx] = [];
+        if (!this.progress[deptId][groupIdx].includes(termIdx)) {
+          this.progress[deptId][groupIdx].push(termIdx);
+          this.saveProgress();
+          this.updateGroupProgressBar(deptId, groupIdx);
+        }
+      }
+
+      getGroupProgressPercent(deptId, groupIdx) {
+        if (!this.progress[deptId] || !this.progress[deptId][groupIdx]) return 0;
+        return Math.round((this.progress[deptId][groupIdx].length / 10) * 100);
+      }
+
+      getDeptProgressPercent(deptId) {
+        const dept = this.getDept(deptId);
+        let totalViewed = 0;
+        for (let i = 0; i < dept.groups.length; i++) {
+          if (this.progress[deptId] && this.progress[deptId][i]) {
+            totalViewed += this.progress[deptId][i].length;
+          }
+        }
+        return Math.round((totalViewed / 50) * 100);
+      }
+
+      // Rendering Views
+      renderHome() {
+        const container = document.getElementById('home-depts');
+        container.innerHTML = DEPARTMENTS.map((dept, index) => {
+          const progress = this.getDeptProgressPercent(dept.id);
+          return `
+            <div class="dept-card" style="--dept-color: ${dept.color}; --dept-glow: ${dept.glow};" onclick="app.navigate('department', { deptId: '${dept.id}' })">
+              <span class="dept-icon">${dept.icon}</span>
+              <h3 class="dept-title-ar">${dept.nameAr}</h3>
+              <span class="dept-title-en">${dept.nameEn}</span>
+              <div class="progress-wrapper">
+                <div class="progress-text">
+                  <span>نسبة الإنجاز</span>
+                  <span>${progress}%</span>
+                </div>
+                <div class="progress-track">
+                  <div class="progress-fill" style="background: ${dept.color}; width: ${progress}%;"></div>
+                </div>
+              </div>
+              <div class="dept-meta">
+                <span>5 مجموعات</span>
+                <span>50 مصطلحاً</span>
+              </div>
+            </div>
+          `;
+        }).join('');
+      }
+
+      renderDepartment(deptId) {
+        const dept = this.getDept(deptId);
+        document.getElementById('dept-name-ar').innerText = dept.nameAr;
+        document.getElementById('dept-name-en').innerText = dept.nameEn;
+
+        // Dynamic Quiz button in header
+        document.getElementById('dept-actions').innerHTML = `
+          <button class="btn btn-primary" onclick="app.startQuiz('${dept.id}')">📝 بدء اختبار القسم</button>
+        `;
+
+        const container = document.getElementById('dept-groups');
+        container.innerHTML = dept.groups.map((group, idx) => {
+          const progress = this.getGroupProgressPercent(deptId, idx);
+          return `
+            <div class="group-card" onclick="app.navigate('terms', { deptId: '${deptId}', groupIndex: ${idx} })">
+              <div>
+                <span class="group-badge">المجموعة ${idx + 1}</span>
+                <h3 class="group-title">${group.nameAr}</h3>
+                <p class="group-subtitle">${group.nameEn}</p>
+              </div>
+              <div class="progress-wrapper">
+                <div class="progress-text">
+                  <span>تم دراستها</span>
+                  <span>${progress}%</span>
+                </div>
+                <div class="progress-track">
+                  <div class="progress-fill" style="background: ${dept.color}; width: ${progress}%;"></div>
+                </div>
+              </div>
+            </div>
+          `;
+        }).join('');
+      }
+
+      renderTerms(deptId, groupIndex) {
+        const dept = this.getDept(deptId);
+        const group = dept.groups[groupIndex];
+
+        // Apply theme color
+        document.documentElement.style.setProperty('--theme-color', dept.color);
+        document.documentElement.style.setProperty('--theme-glow', dept.glow);
+
+        document.getElementById('terms-group-name').innerText = group.nameAr;
+        document.getElementById('terms-dept-name').innerText = dept.nameAr;
+
+        this.updateGroupProgressBar(deptId, groupIndex);
+
+        const listContainer = document.getElementById('terms-list');
+        listContainer.innerHTML = group.terms.map((term, idx) => {
+          return `
+            <div class="flashcard" id="card-${idx}" onclick="app.flipCard(${idx})">
+              <div class="flashcard-inner">
+                <!-- Front (English) -->
+                <div class="flashcard-front">
+                  <div class="card-top">
+                    <span>${dept.nameAr}</span>
+                    <span>#${idx + 1}</span>
+                  </div>
+                  <div class="card-word-en">${term.en}</div>
+                  <div class="card-hint">انقر للكشف عن المعنى 🔄</div>
+                </div>
+                <!-- Back (Arabic) -->
+                <div class="flashcard-back">
+                  <div class="card-top">
+                    <span>ترجمة المصطلح</span>
+                    <span>#${idx + 1}</span>
+                  </div>
+                  <div class="card-word-ar">${term.ar}</div>
+                  <div class="card-pronunciation" onclick="event.stopPropagation()">
+                    <span>النطق: ${term.pron}</span>
+                    <button class="btn-audio" onclick="app.speakWord('${term.en}')">🔊</button>
+                  </div>
+                  <div class="card-hint">انقر للرجوع 🔄</div>
+                </div>
+              </div>
+            </div>
+          `;
+        }).join('');
+
+        // Navigation controls
+        const btnPrev = document.getElementById('btn-prev-group');
+        const btnNext = document.getElementById('btn-next-group');
+
+        btnPrev.onclick = () => {
+          if (groupIndex > 0) {
+            this.navigate('terms', { deptId, groupIndex: groupIndex - 1 });
+          } else {
+            this.showToast('أنت في المجموعة الأولى بالفعل!', 'info');
+          }
+        };
+
+        btnNext.onclick = () => {
+          if (groupIndex < dept.groups.length - 1) {
+            this.navigate('terms', { deptId, groupIndex: groupIndex + 1 });
+          } else {
+            this.showToast('لقد أكملت جميع مجموعات هذا القسم!', 'success');
+          }
+        };
+      }
+
+      updateGroupProgressBar(deptId, groupIndex) {
+        const pct = this.getGroupProgressPercent(deptId, groupIndex);
+        document.getElementById('group-progress-pct').innerText = `${pct}%`;
+        document.getElementById('group-progress-bar').style.width = `${pct}%`;
+      }
+
+      flipCard(idx) {
+        const card = document.getElementById(`card-${idx}`);
+        card.classList.toggle('flipped');
+        
+        if (card.classList.contains('flipped')) {
+          this.flippedCards.add(idx);
+          this.markTermViewed(this.currentDeptId, this.currentGroupIndex, idx);
+        } else {
+          this.flippedCards.delete(idx);
+        }
+      }
+
+      flipAllCards() {
+        const group = this.getDept(this.currentDeptId).groups[this.currentGroupIndex];
+        const shouldFlipAll = this.flippedCards.size < 10;
+        
+        for (let i = 0; i < 10; i++) {
+          const card = document.getElementById(`card-${i}`);
+          if (shouldFlipAll) {
+            card.classList.add('flipped');
+            this.flippedCards.add(i);
+            this.markTermViewed(this.currentDeptId, this.currentGroupIndex, i);
+          } else {
+            card.classList.remove('flipped');
+            this.flippedCards.delete(i);
+          }
+        }
+      }
+
+      speakWord(text) {
+        if ('speechSynthesis' in window) {
+          const utterance = new SpeechSynthesisUtterance(text);
+          utterance.lang = 'en-US';
+          window.speechSynthesis.speak(utterance);
+        } else {
+          this.showToast('النطق الصوتي غير مدعوم في متصفحك.', 'warning');
+        }
+      }
+
+      // Search Logic
+      handleSearch(event) {
+        const query = event.target.value.toLowerCase().trim();
+        const resultsContainer = document.getElementById('search-results-list');
+        
+        if (!query) {
+          resultsContainer.innerHTML = '';
+          return;
+        }
+
+        let results = [];
+        DEPARTMENTS.forEach(dept => {
+          dept.groups.forEach((group, groupIdx) => {
+            group.terms.forEach((term, termIdx) => {
+              if (term.en.toLowerCase().includes(query) || 
+                  term.ar.includes(query) || 
+                  term.pron.includes(query)) {
+                results.push({ dept, group, groupIdx, term, termIdx });
+              }
+            });
+          });
+        });
+
+        if (results.length === 0) {
+          resultsContainer.innerHTML = `<div style="text-align:center; padding: 40px; color: var(--text-muted);">لم يتم العثور على أي نتائج مطابقة لـ "${query}"</div>`;
+          return;
+        }
+
+        resultsContainer.innerHTML = results.map(res => {
+          const highlightedEn = res.term.en.replace(new RegExp(`(${query})`, 'gi'), '<mark>$1</mark>');
+          const highlightedAr = res.term.ar.replace(new RegExp(`(${query})`, 'gi'), '<mark>$1</mark>');
+          const highlightedPron = res.term.pron.replace(new RegExp(`(${query})`, 'gi'), '<mark>$1</mark>');
+
+          return `
+            <div class="result-item" onclick="app.navigate('terms', { deptId: '${res.dept.id}', groupIndex: ${res.groupIdx} })">
+              <div class="result-words">
+                <span class="result-en">${highlightedEn}</span>
+                <span class="result-ar">${highlightedAr}</span>
+                <span style="font-size:0.9rem; color:var(--text-secondary);">النطق: ${highlightedPron}</span>
+              </div>
+              <div style="display:flex; gap: 8px; align-items:center;">
+                <span class="result-badge" style="background: rgba(255,255,255,0.05); color: #fff;">${res.group.nameAr}</span>
+                <span class="result-badge" style="background: ${res.dept.color}; color:#fff;">${res.dept.nameAr}</span>
+              </div>
+            </div>
+          `;
+        }).join('');
+      }
+
+      // Quiz Logic
+      renderQuizSetup() {
+        document.getElementById('quiz-setup-screen').style.display = 'block';
+        document.getElementById('quiz-active-screen').style.display = 'none';
+        document.getElementById('quiz-results-screen').style.display = 'none';
+
+        const container = document.getElementById('quiz-depts');
+        container.innerHTML = DEPARTMENTS.map(dept => {
+          return `
+            <div class="dept-card" style="--dept-color: ${dept.color}; --dept-glow: ${dept.glow};" onclick="app.startQuiz('${dept.id}')">
+              <span class="dept-icon">${dept.icon}</span>
+              <h3 class="dept-title-ar">${dept.nameAr}</h3>
+              <span class="dept-title-en">${dept.nameEn}</span>
+              <p style="color:var(--text-secondary); font-size:0.9rem; margin-top:10px;">بدء تحدي الـ 10 أسئلة</p>
+            </div>
+          `;
+        }).join('');
+      }
+
+      startQuiz(deptId) {
+        const dept = this.getDept(deptId);
+        document.documentElement.style.setProperty('--theme-color', dept.color);
+        document.documentElement.style.setProperty('--theme-glow', dept.glow);
+
+        // Gather all 50 terms of this department
+        let allTerms = [];
+        dept.groups.forEach(g => {
+          allTerms = allTerms.concat(g.terms);
+        });
+
+        // Pick 10 random terms for questions
+        const shuffled = [...allTerms].sort(() => 0.5 - Math.random());
+        const selected = shuffled.slice(0, 10);
+
+        this.quiz = {
+          deptId: deptId,
+          questions: selected.map(term => {
+            // Generate 3 wrong options from the same department
+            const wrongOptions = allTerms
+              .filter(t => t.en !== term.en)
+              .sort(() => 0.5 - Math.random())
+              .slice(0, 3)
+              .map(t => t.ar);
+
+            const options = [term.ar, ...wrongOptions].sort(() => 0.5 - Math.random());
+
+            return {
+              wordEn: term.en,
+              correctAr: term.ar,
+              options: options
+            };
+          }),
+          currentIdx: 0,
+          score: 0,
+          answered: false
+        };
+
+        document.getElementById('quiz-dept-title').innerText = dept.nameAr;
+        document.getElementById('quiz-setup-screen').style.display = 'none';
+        document.getElementById('quiz-active-screen').style.display = 'block';
+        document.getElementById('quiz-results-screen').style.display = 'none';
+
+        this.renderQuizQuestion();
+      }
+
+      renderQuizQuestion() {
+        const q = this.quiz.questions[this.quiz.currentIdx];
+        this.quiz.answered = false;
+
+        document.getElementById('quiz-current-num').innerText = this.quiz.currentIdx + 1;
+        document.getElementById('quiz-progress-bar').style.width = `${((this.quiz.currentIdx + 1) / 10) * 100}%`;
+        document.getElementById('quiz-question-text').innerText = q.wordEn;
+
+        const optionsContainer = document.getElementById('quiz-options-list');
+        optionsContainer.innerHTML = q.options.map((opt, idx) => {
+          return `
+            <button class="option-btn" onclick="app.submitQuizAnswer('${opt}', this)">
+              <span>${idx + 1}. ${opt}</span>
+            </button>
+          `;
+        }).join('');
+      }
+
+      submitQuizAnswer(selectedOption, element) {
+        if (this.quiz.answered) return;
+        this.quiz.answered = true;
+
+        const q = this.quiz.questions[this.quiz.currentIdx];
+        const buttons = document.querySelectorAll('.option-btn');
+
+        buttons.forEach(btn => {
+          if (btn.innerText.includes(q.correctAr)) {
+            btn.classList.add('correct');
+          }
+        });
+
+        if (selectedOption === q.correctAr) {
+          this.quiz.score++;
+          this.showToast('إجابة صحيحة! 🎉', 'success');
+        } else {
+          element.classList.add('wrong');
+          this.showToast('إجابة خاطئة! ❌', 'warning');
+        }
+
+        setTimeout(() => {
+          if (this.quiz.currentIdx < 9) {
+            this.quiz.currentIdx++;
+            this.renderQuizQuestion();
+          } else {
+            this.showQuizResults();
+          }
+        }, 1500);
+      }
+
+      showQuizResults() {
+        document.getElementById('quiz-active-screen').style.display = 'none';
+        document.getElementById('quiz-results-screen').style.display = 'block';
+
+        const pct = (this.quiz.score / 10) * 100;
+        document.getElementById('results-percentage').innerText = `${pct}%`;
+        
+        // Calculate circle chart offset
+        const circle = document.getElementById('results-circle-fill');
+        const r = circle.r.baseVal.value;
+        const circ = 2 * Math.PI * r;
+        const offset = circ - (pct / 100) * circ;
+        circle.style.strokeDashoffset = offset;
+
+        // Custom feedback text
+        let grade = '';
+        let desc = `لقد أجبت على ${this.quiz.score} من أصل 10 أسئلة بشكل صحيح.`;
+        if (pct >= 90) {
+          grade = 'ممتاز! 🏆';
+        } else if (pct >= 70) {
+          grade = 'رائع جداً! 🌟';
+        } else if (pct >= 50) {
+          grade = 'جيد، ثابر وواصل التعلم! 💪';
+        } else {
+          grade = 'حاول مجدداً! 📚';
+        }
+
+        document.getElementById('results-grade').innerText = grade;
+        document.getElementById('results-text').innerText = desc;
+      }
+
+      restartQuiz() {
+        this.startQuiz(this.quiz.deptId);
+      }
+
+      // Notification Helper
+      showToast(message, type = 'info') {
+        const container = document.getElementById('toast-container');
+        const toast = document.createElement('div');
+        toast.className = `toast toast-${type}`;
+        toast.innerText = message;
+        container.appendChild(toast);
+
+        setTimeout(() => {
+          toast.style.opacity = '0';
+          toast.style.transform = 'translateY(20px)';
+          setTimeout(() => toast.remove(), 300);
+        }, 2500);
+      }
+    }
+
+    // Launch application
+    let app;
+    window.addEventListener('DOMContentLoaded', () => {
+      app = new NTUTermsApp();
+      app.init();
+      
+      // Navigate to home initially
+      app.navigate('home');
+    });
+  </script>
+</body>
+</html>
